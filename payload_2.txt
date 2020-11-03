@@ -6,7 +6,12 @@
 #
 #
 MATCH mypass
+LED ATTACK
+sleep 2
 Q CONTROL-SHIFT-LEFTARROW
 Q DELETE
 Q STRING "$(sed '$!d' root/udisk/loot/mypass.txt.filtered)"
 Q ENTER
+LED FINISH
+sleep 2
+LED OFF
